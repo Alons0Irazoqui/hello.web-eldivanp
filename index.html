@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Diván del Psicoanalista | Espacio Terapéutico</title>
+    <meta name="description" content="Terapia psicoanalítica presencial y online. Especialistas en adolescentes, adultos y parejas. Un espacio para comprenderte, transformarte y vivir mejor en México, Argentina y Colombia.">
+    <meta name="keywords" content="psicoanalista, terapia online, terapia presencial, tijuana, psicologo tijuana, ansiedad, depresion, terapia de pareja, oscar villalpando">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#fdf9f6',
+                            dark: '#1a181c',
+                            purple: '#F07326',
+                            purpleDark: '#D45D0D',
+                            accent: '#FAA84F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+    <!-- BARRA DE PROGRESO DE SCROLL -->
+    <div id="scroll-progress"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <img src="logo.png" alt="El Diván" class="preloader-logo w-64 md:w-80 mb-8">
+        <div class="spinner-ring"></div>
+        <p class="font-sans text-xs uppercase tracking-[0.3em] text-gray-400 mt-4">Cargando experiencia...</p>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 w-full z-50" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 z-50 group">
+                <img src="logo.png" alt="El Diván logo" class="navbar-logo group-hover:scale-105">
+                <div class="leading-none">
+                    <h1 class="font-serif font-bold text-xl text-brand-dark">El Diván</h1>
+                    <span class="font-sans text-[10px] uppercase tracking-wider text-gray-500">Espacio Terapéutico</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 glass px-8 py-3 rounded-full">
+                <a href="#filosofia" class="font-sans text-sm font-medium hover:text-brand-purple transition-colors nav-link">Filosofía</a>
+                <a href="#proceso" class="font-sans text-sm font-medium hover:text-brand-purple transition-colors nav-link">Proceso</a>
+                <a href="#servicios" class="font-sans text-sm font-medium hover:text-brand-purple transition-colors nav-link">Especialidades</a>
+                <a href="#testimonios" class="font-sans text-sm font-medium hover:text-brand-purple transition-colors nav-link">Testimonios</a>
+                <a href="#contacto" class="bg-brand-purple text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-brand-purpleDark transition-all hover:shadow-lg hover:-translate-y-0.5">Agendar Cita</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-2xl z-50 text-brand-dark" id="menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-light flex flex-col justify-center items-center gap-8 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] z-40">
+            <a href="#filosofia" class="mobile-link font-serif text-3xl text-brand-dark hover:text-brand-purple transition-colors">Filosofía</a>
+            <a href="#proceso" class="mobile-link font-serif text-3xl text-brand-dark hover:text-brand-purple transition-colors">Proceso</a>
+            <a href="#servicios" class="mobile-link font-serif text-3xl text-brand-dark hover:text-brand-purple transition-colors">Especialidades</a>
+            <a href="#testimonios" class="mobile-link font-serif text-3xl text-brand-dark hover:text-brand-purple transition-colors">Testimonios</a>
+            <a href="#contacto" class="mobile-link mt-4 bg-brand-purple text-white px-8 py-3 rounded-full text-lg font-medium">Agendar Cita</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================
+             HERO
+        ===================== -->
+        <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-light">
+
+            <!-- Imagen de fondo: consultorio/espacio terapéutico claro -->
+            <div id="hero-bg" class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center; will-change: transform; transition: transform 0.1s linear;"></div>
+
+            <!-- Overlay crema para mantener tema claro -->
+            <div class="absolute inset-0 z-[1] bg-gradient-to-br from-brand-light/90 via-white/70 to-brand-light/80"></div>
+
+            <!-- Canvas de partículas -->
+            <canvas id="hero-canvas" class="z-[2]"></canvas>
+
+            <!-- Overlay degradado inferior -->
+            <div class="absolute inset-0 z-[3] bg-gradient-to-b from-transparent via-transparent to-brand-light pointer-events-none"></div>
+
+            <!-- Contenido -->
+            <div class="relative z-[10] max-w-5xl mx-auto px-6 text-center mt-16">
+
+                <div class="inline-block mb-6 overflow-hidden">
+                    <span class="gsap-hero-badge inline-block font-sans text-xs uppercase tracking-[0.2em] bg-brand-purple/10 text-brand-purple px-5 py-2 rounded-full border border-brand-purple/20">
+                        Psicoanálisis Contemporáneo · Tijuana, México
+                    </span>
+                </div>
+
+                <h2 class="gsap-hero-title font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-brand-dark leading-[1.08] tracking-tight mb-4">
+                    Tu camino hacia el
+                </h2>
+                <div class="gsap-hero-sub font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.08] tracking-tight mb-8">
+                    <span class="italic text-brand-purple">
+                        <span id="typewriter-word"></span><span class="typewriter-cursor"></span>
+                    </span>
+                </div>
+
+                <p class="gsap-hero-text max-w-2xl mx-auto font-sans text-lg md:text-xl text-gray-500 mb-10 leading-relaxed">
+                    Un espacio seguro para escuchar aquello que el dolor intenta decirnos, descubrir su origen y encontrar nuevas formas de vivir nuestra historia.
+                </p>
+
+                <div class="gsap-hero-btns flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contacto" class="btn-primary w-full sm:w-auto bg-brand-purple text-white px-8 py-4 rounded-full font-medium hover:bg-brand-purpleDark transition-all hover:shadow-xl hover:shadow-brand-purple/25 hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                        Inicia tu proceso
+                        <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#filosofia" class="w-full sm:w-auto px-8 py-4 rounded-full font-medium text-brand-dark border border-gray-300 hover:border-brand-purple hover:text-brand-purple transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+                        <i class="ph ph-play-circle text-xl"></i>
+                        Descubre cómo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-[10] gsap-hero-scroll">
+                <span class="font-sans text-[10px] uppercase tracking-widest text-gray-400">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-gray-400 to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- =====================
+             FILOSOFÍA / QUOTE
+        ===================== -->
+        <section id="filosofia" class="py-32 bg-brand-light relative overflow-hidden">
+            <!-- Decorative large text -->
+            <div class="absolute -top-8 left-1/2 -translate-x-1/2 text-[20vw] font-serif font-bold text-outline whitespace-nowrap pointer-events-none select-none">PSICOANÁLISIS</div>
+
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <i class="ph-fill ph-quotes text-5xl text-brand-purple/20 mb-8 inline-block float-anim"></i>
+                <blockquote class="filosofia-quote font-serif text-3xl md:text-5xl leading-[1.3] text-brand-dark">
+                    "El sufrimiento no siempre proviene de lo que nos ocurre, sino de aquello que
+                    <span class="text-brand-purple italic"> sentimos, callamos o repetimos</span>
+                    sin comprender."
+                </blockquote>
+                <p class="mt-8 font-sans text-sm uppercase tracking-widest text-gray-400">— La base de nuestro psicoanálisis</p>
+            </div>
+        </section>
+
+        <!-- =====================
+             MARQUEE DE PALABRAS CLAVE
+        ===================== -->
+        <div class="py-6 bg-white border-y border-gray-100 overflow-hidden">
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <span class="inline-flex items-center gap-6 px-8">
+                        <span class="font-serif text-xl text-gray-300">Psicoanálisis</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Bienestar Emocional</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Terapia Individual</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Terapia de Pareja</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Adolescentes</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Tijuana · Argentina · Colombia</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Ansiedad &amp; Depresión</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Sesiones Online</span>
+                        <span class="text-brand-purple/30">✦</span>
+                    </span>
+                    <!-- Duplicado para loop infinito -->
+                    <span class="inline-flex items-center gap-6 px-8">
+                        <span class="font-serif text-xl text-gray-300">Psicoanálisis</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Bienestar Emocional</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Terapia Individual</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Terapia de Pareja</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Adolescentes</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Tijuana · Argentina · Colombia</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Ansiedad &amp; Depresión</span>
+                        <span class="text-brand-purple/30">✦</span>
+                        <span class="font-serif text-xl text-gray-300">Sesiones Online</span>
+                        <span class="text-brand-purple/30">✦</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================
+             SÍNTOMAS
+        ===================== -->
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[15vw] font-serif font-bold text-outline pointer-events-none select-none z-0">
+                SANA TU MENTE
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="mb-16 text-center gsap-fade-up">
+                    <span class="section-tag">Señales de alerta</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark">A veces, el dolor se manifiesta como:</h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-brain text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Ansiedad</h4>
+                    </div>
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-cloud-rain text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Tristeza / Depresión</h4>
+                    </div>
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-lightning text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Enojo Constante</h4>
+                    </div>
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-warning-circle text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Culpa / Miedos</h4>
+                    </div>
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-users text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Relaciones que se repiten</h4>
+                    </div>
+                    <div class="symptom-card group bg-brand-light/50 border border-gray-100 p-6 rounded-3xl hover:bg-brand-purple hover:border-brand-purple transition-all duration-500 text-center cursor-pointer hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-purple/20">
+                        <i class="ph ph-heart-break text-4xl text-brand-purple group-hover:text-white transition-colors duration-500 mb-4 inline-block"></i>
+                        <h4 class="font-sans font-medium text-brand-dark group-hover:text-white transition-colors duration-500 text-sm">Duelos y Pérdidas</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             STATS / NÚMEROS
+        ===================== -->
+        <section class="py-24 bg-brand-dark text-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 gsap-fade-up">
+                    <span class="section-tag section-tag-light">En cifras</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-medium mt-2">Años de experiencia que nos respaldan.</h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                    <div class="text-center gsap-scale-in">
+                        <div class="font-serif font-bold text-6xl md:text-7xl text-brand-accent mb-2">
+                            <span class="stat-counter" data-target="10" data-suffix="+">0</span>
+                        </div>
+                        <p class="font-sans text-sm text-gray-400 uppercase tracking-wider">Años de experiencia</p>
+                    </div>
+                    <div class="text-center gsap-scale-in">
+                        <div class="font-serif font-bold text-6xl md:text-7xl text-brand-accent mb-2">
+                            <span class="stat-counter" data-target="500" data-suffix="+">0</span>
+                        </div>
+                        <p class="font-sans text-sm text-gray-400 uppercase tracking-wider">Pacientes atendidos</p>
+                    </div>
+                    <div class="text-center gsap-scale-in">
+                        <div class="font-serif font-bold text-6xl md:text-7xl text-brand-accent mb-2">
+                            <span class="stat-counter" data-target="3">0</span>
+                        </div>
+                        <p class="font-sans text-sm text-gray-400 uppercase tracking-wider">Países de alcance</p>
+                    </div>
+                    <div class="text-center gsap-scale-in">
+                        <div class="font-serif font-bold text-6xl md:text-7xl text-brand-accent mb-2">
+                            <span class="stat-counter" data-target="98" data-suffix="%">0</span>
+                        </div>
+                        <p class="font-sans text-sm text-gray-400 uppercase tracking-wider">Índice de satisfacción</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             ESPECIALIDADES
+        ===================== -->
+        <section id="servicios" class="py-32 bg-brand-dark text-white relative z-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gsap-fade-up">
+                    <div class="max-w-2xl">
+                        <span class="section-tag section-tag-light mb-3">Especialidades</span>
+                        <h2 class="font-serif text-4xl md:text-6xl font-medium">Así es como puedo ayudarte.</h2>
+                    </div>
+                    <p class="font-sans text-gray-400 max-w-sm mt-6 md:mt-0 text-sm md:text-base">
+                        Abordaje profesional especializado para diferentes etapas y conflictos de la vida.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="service-card relative overflow-hidden rounded-3xl aspect-[4/5] group bg-white/5 border border-white/10 hover:border-brand-accent/60 transition-colors cursor-pointer">
+                        <!-- Terapia individual adultos: persona en sesión de terapia -->
+                        <div class="service-bg absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <div class="mb-4 bg-brand-accent w-12 h-12 rounded-full flex items-center justify-center transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <i class="ph ph-user text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">Terapia Individual Adultos</h3>
+                            <p class="font-sans text-sm text-gray-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                                Tratamiento para problemas emocionales, estrés postraumático, déficit de atención, problemas de conducta y autoestima.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="service-card relative overflow-hidden rounded-3xl aspect-[4/5] group bg-white/5 border border-white/10 hover:border-brand-purple/60 transition-colors cursor-pointer">
+                        <!-- Terapia de pareja: dos personas conversando -->
+                        <div class="service-bg absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?q=80&w=800&auto=format&fit=crop');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <div class="mb-4 bg-brand-purple w-12 h-12 rounded-full flex items-center justify-center transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <i class="ph ph-users text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">Terapia en Pareja</h3>
+                            <p class="font-sans text-sm text-gray-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                                Identifica necesidades emocionales, construye límites saludables, supera separaciones y crea vínculos más conscientes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="service-card relative overflow-hidden rounded-3xl aspect-[4/5] group bg-white/5 border border-white/10 hover:border-brand-accent/60 transition-colors cursor-pointer">
+                        <!-- Adolescentes: joven estudiante -->
+                        <div class="service-bg absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                            <div class="mb-4 bg-brand-accent w-12 h-12 rounded-full flex items-center justify-center transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <i class="ph ph-student text-white text-2xl"></i>
+                            </div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">Adolescentes</h3>
+                            <p class="font-sans text-sm text-gray-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                                Abordaje empático para acoso escolar (bullying), timidez, fobias, autoagresiones y orientación en etapas de cambio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             PROCESO TERAPÉUTICO
+        ===================== -->
+        <section id="proceso" class="py-32 bg-brand-light relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20 gsap-fade-up">
+                    <span class="section-tag">Metodología</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mt-2 mb-4">
+                        Tu proceso, paso a paso.
+                    </h2>
+                    <p class="font-sans text-gray-500 max-w-xl mx-auto leading-relaxed">
+                        Cada proceso es único. Sin embargo, todos comparten un camino trazado con cuidado, respeto y profesionalismo.
+                    </p>
+                </div>
+
+                <!-- Línea conectora -->
+                <div class="relative hidden md:block mb-8">
+                    <div id="process-line" class="h-[1px] bg-gradient-to-r from-brand-purple/10 via-brand-purple/40 to-brand-purple/10 mx-16"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+
+                    <!-- Paso 1 -->
+                    <div class="process-step relative text-center group cursor-default">
+                        <span class="process-step-number">01</span>
+                        <div class="process-step-icon w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <i class="ph ph-phone-call text-brand-purple text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark mb-3">Primera Consulta</h3>
+                        <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                            Una sesión de evaluación sin compromiso. Cuéntanos qué te trajo aquí. Sin juicios, solo escuchamos.
+                        </p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="process-step relative text-center group cursor-default">
+                        <span class="process-step-number">02</span>
+                        <div class="process-step-icon w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <i class="ph ph-magnifying-glass text-brand-purple text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark mb-3">Diagnóstico Inicial</h3>
+                        <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                            Exploramos tu historia, identificamos patrones y establecemos metas claras para tu proceso.
+                        </p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="process-step relative text-center group cursor-default">
+                        <span class="process-step-number">03</span>
+                        <div class="process-step-icon w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <i class="ph ph-path text-brand-purple text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark mb-3">Proceso Personalizado</h3>
+                        <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                            Sesiones adaptadas a tu ritmo, tu lenguaje y tus necesidades. Tu proceso no se parece al de nadie más.
+                        </p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="process-step relative text-center group cursor-default">
+                        <span class="process-step-number">04</span>
+                        <div class="process-step-icon w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                            <i class="ph ph-shooting-star text-brand-purple text-3xl"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-dark mb-3">Transformación</h3>
+                        <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                            Vivir desde un lugar de mayor consciencia, libertad emocional y bienestar. Eso es la meta.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-16 gsap-fade-up">
+                    <a href="#contacto" class="inline-flex items-center gap-2 font-sans text-brand-purple font-medium hover:gap-4 transition-all duration-300 group">
+                        Comenzar mi proceso
+                        <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             MODALIDADES
+        ===================== -->
+        <section id="modalidad" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                    <div class="order-2 lg:order-1 relative modalidad-img">
+                        <div class="relative w-full aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl">
+                            <!-- Consultorio: sala de terapia profesional y acogedora -->
+                            <img src="https://images.unsplash.com/photo-1586902279476-3244d8d18285?q=80&w=1000&auto=format&fit=crop" alt="Consultorio psicológico" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-8 -right-8 glass p-6 rounded-2xl max-w-xs shadow-2xl float-anim hidden md:block border border-white/40">
+                            <div class="flex items-center gap-4 mb-2">
+                                <div class="bg-brand-purple p-2.5 rounded-full">
+                                    <i class="ph ph-shield-check text-white text-xl"></i>
+                                </div>
+                                <h4 class="font-serif font-bold text-lg text-brand-dark">Atención Personalizada</h4>
+                            </div>
+                            <p class="font-sans text-sm text-gray-600">Confidencial, Profesional y Empática. Un lugar para descubrirte.</p>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 gsap-fade-right">
+                        <span class="section-tag">Cómo trabajamos</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mb-8">El espacio que necesitas, <br><span class="text-brand-purple italic">donde lo necesites.</span></h2>
+
+                        <div class="space-y-8">
+                            <div class="flex gap-6 items-start group">
+                                <div class="bg-brand-light p-4 rounded-2xl shadow-sm text-brand-purple shrink-0 group-hover:bg-brand-purple group-hover:text-white transition-all duration-300">
+                                    <i class="ph ph-armchair text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2">Terapia Presencial</h3>
+                                    <p class="font-sans text-gray-500 leading-relaxed">Un espacio físico seguro para tu bienestar. Acude a terapia con especialistas en nuestras instalaciones en Playas de Tijuana, B.C.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-6 items-start group">
+                                <div class="bg-brand-light p-4 rounded-2xl shadow-sm text-brand-purple shrink-0 group-hover:bg-brand-purple group-hover:text-white transition-all duration-300">
+                                    <i class="ph ph-desktop text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2">Terapia Online</h3>
+                                    <p class="font-sans text-gray-500 leading-relaxed">Acompañamiento donde estés. Atendemos pacientes de México, Argentina, Colombia y más, rompiendo barreras geográficas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 p-6 bg-brand-light rounded-2xl border border-gray-100 flex items-center justify-between gap-4">
+                            <div>
+                                <span class="font-sans text-xs text-gray-400 uppercase tracking-wider block mb-1">Con el Maestro</span>
+                                <strong class="font-serif text-xl text-brand-dark">Oscar Villalpando</strong>
+                            </div>
+                            <div class="h-10 w-[1px] bg-gray-200"></div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" class="w-6 h-4 rounded-sm object-cover" alt="Mexico">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" class="w-6 h-4 rounded-sm object-cover" alt="Argentina">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" class="w-6 h-4 rounded-sm object-cover" alt="Colombia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             TESTIMONIOS
+        ===================== -->
+        <section id="testimonios" class="py-32 bg-brand-light relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-80 h-80 bg-brand-purple/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-20 gsap-fade-up">
+                    <span class="section-tag">Testimonios</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mt-2 mb-4">
+                        Lo que dicen <span class="italic text-brand-purple">nuestros pacientes.</span>
+                    </h2>
+                    <p class="font-sans text-gray-500 max-w-xl mx-auto">Historias reales de personas que decidieron conocerse a sí mismas.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Testimonio 1 -->
+                    <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm relative">
+                        <i class="ph-fill ph-quotes absolute top-6 right-6 text-5xl text-brand-purple/8"></i>
+                        <div class="flex mb-5">
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                        </div>
+                        <blockquote class="font-serif text-lg italic text-brand-dark leading-relaxed mb-7">
+                            "Gracias al proceso que viví en El Diván, comencé a entender patrones que repetía sin darme cuenta. Hoy tengo herramientas reales para vivir de otra manera."
+                        </blockquote>
+                        <div class="flex items-center gap-3">
+                            <div class="avatar-initial bg-brand-purple/10 text-brand-purple">M</div>
+                            <div>
+                                <p class="font-sans font-semibold text-brand-dark text-sm">María G.</p>
+                                <p class="font-sans text-xs text-gray-400">Terapia Individual · 8 meses</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm relative">
+                        <i class="ph-fill ph-quotes absolute top-6 right-6 text-5xl text-brand-purple/8"></i>
+                        <div class="flex mb-5">
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                        </div>
+                        <blockquote class="font-serif text-lg italic text-brand-dark leading-relaxed mb-7">
+                            "La terapia de pareja nos dio un lenguaje nuevo. Aprendimos a comunicarnos desde la honestidad y el respeto. Fue un antes y un después para nosotros."
+                        </blockquote>
+                        <div class="flex items-center gap-3">
+                            <div class="avatar-initial bg-brand-accent/10 text-brand-accent">C</div>
+                            <div>
+                                <p class="font-sans font-semibold text-brand-dark text-sm">Carlos y Ana P.</p>
+                                <p class="font-sans text-xs text-gray-400">Terapia de Pareja · 1 año</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm relative">
+                        <i class="ph-fill ph-quotes absolute top-6 right-6 text-5xl text-brand-purple/8"></i>
+                        <div class="flex mb-5">
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                            <i class="ph-fill ph-star star-icon text-lg"></i>
+                        </div>
+                        <blockquote class="font-serif text-lg italic text-brand-dark leading-relaxed mb-7">
+                            "Como adolescente tenía miedo de hablar de mis problemas. Aquí me sentí escuchado desde el primer día. Sin presiones, sin etiquetas. Solo comprensión."
+                        </blockquote>
+                        <div class="flex items-center gap-3">
+                            <div class="avatar-initial bg-brand-purple/10 text-brand-purple">D</div>
+                            <div>
+                                <p class="font-sans font-semibold text-brand-dark text-sm">Diego M.</p>
+                                <p class="font-sans text-xs text-gray-400">Terapia Adolescentes · 6 meses</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             FAQ
+        ===================== -->
+        <section id="faq" class="py-32 bg-white">
+            <div class="max-w-3xl mx-auto px-6">
+                <div class="text-center mb-16 gsap-fade-up">
+                    <span class="section-tag">Preguntas Frecuentes</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mt-2 mb-4">
+                        Resolvemos tus <span class="italic text-brand-purple">dudas.</span>
+                    </h2>
+                    <p class="font-sans text-gray-500">¿Tienes preguntas? Aquí respondemos las más comunes.</p>
+                </div>
+
+                <div class="space-y-3">
+
+                    <!-- FAQ 1 -->
+                    <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white">
+                        <button class="faq-trigger">
+                            <span class="font-sans font-medium text-brand-dark">¿Cuánto dura una sesión?</span>
+                            <div class="faq-icon-wrap w-9 h-9 rounded-full bg-brand-light border border-gray-200 flex items-center justify-center">
+                                <i class="ph ph-plus text-brand-purple text-lg"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <p class="font-sans text-gray-500 leading-relaxed px-6 pb-6">
+                                Cada sesión tiene una duración de 50 a 60 minutos. La frecuencia recomendada es de una sesión semanal para garantizar la continuidad necesaria en el proceso terapéutico.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white">
+                        <button class="faq-trigger">
+                            <span class="font-sans font-medium text-brand-dark">¿Puedo hacer terapia desde cualquier país?</span>
+                            <div class="faq-icon-wrap w-9 h-9 rounded-full bg-brand-light border border-gray-200 flex items-center justify-center">
+                                <i class="ph ph-plus text-brand-purple text-lg"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <p class="font-sans text-gray-500 leading-relaxed px-6 pb-6">
+                                Sí. Ofrecemos terapia online para pacientes de México, Argentina, Colombia y cualquier otro país de habla hispana. Solo necesitas conexión a internet y un espacio privado.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white">
+                        <button class="faq-trigger">
+                            <span class="font-sans font-medium text-brand-dark">¿Qué ocurre en la primera sesión?</span>
+                            <div class="faq-icon-wrap w-9 h-9 rounded-full bg-brand-light border border-gray-200 flex items-center justify-center">
+                                <i class="ph ph-plus text-brand-purple text-lg"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <p class="font-sans text-gray-500 leading-relaxed px-6 pb-6">
+                                La primera sesión es una entrevista de evaluación. No hay compromisos. Exploramos tu situación actual, tus necesidades y respondemos tus preguntas. Es un espacio para que decidas si el proceso es para ti.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white">
+                        <button class="faq-trigger">
+                            <span class="font-sans font-medium text-brand-dark">¿La información que comparto es confidencial?</span>
+                            <div class="faq-icon-wrap w-9 h-9 rounded-full bg-brand-light border border-gray-200 flex items-center justify-center">
+                                <i class="ph ph-plus text-brand-purple text-lg"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <p class="font-sans text-gray-500 leading-relaxed px-6 pb-6">
+                                Absolutamente. El secreto profesional es uno de los pilares éticos de nuestra práctica. Todo lo que compartes en sesión es estrictamente confidencial y nunca será divulgado a terceros.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item border border-gray-100 rounded-2xl overflow-hidden bg-white">
+                        <button class="faq-trigger">
+                            <span class="font-sans font-medium text-brand-dark">¿Cuánto tiempo dura el proceso terapéutico?</span>
+                            <div class="faq-icon-wrap w-9 h-9 rounded-full bg-brand-light border border-gray-200 flex items-center justify-center">
+                                <i class="ph ph-plus text-brand-purple text-lg"></i>
+                            </div>
+                        </button>
+                        <div class="faq-content">
+                            <p class="font-sans text-gray-500 leading-relaxed px-6 pb-6">
+                                Depende de cada persona y del motivo de consulta. Algunos procesos son breves (3-6 meses) y otros más extensos. Lo que importa es tu bienestar, no seguir un cronograma rígido. Evaluamos contigo en cada etapa.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================
+             CONTACTO
+        ===================== -->
+        <section id="contacto" class="py-32 bg-brand-light relative">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="contacto-card bg-brand-dark text-white rounded-[3rem] overflow-hidden relative shadow-2xl">
+                    <div class="absolute top-0 right-0 w-1/2 h-full bg-brand-purple opacity-15 blur-[100px] pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-brand-accent opacity-10 blur-[80px] pointer-events-none"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-12 md:p-16 flex flex-col justify-between relative z-10">
+                            <div>
+                                <span class="section-tag section-tag-light mb-6">Agenda tu cita</span>
+                                <h2 class="font-serif text-4xl md:text-5xl font-medium mb-6">Da el primer paso hacia tu bienestar emocional.</h2>
+                                <p class="font-sans text-gray-400 mb-10">Comprende tu historia, fortalece tus relaciones y construye una vida más plena. El primer paso es el más importante.</p>
+
+                                <div class="flex items-center gap-4 mb-5">
+                                    <div class="w-11 h-11 bg-brand-accent/20 rounded-full flex items-center justify-center shrink-0">
+                                        <i class="ph-fill ph-phone-call text-xl text-brand-accent"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-sans text-xs text-gray-500 uppercase tracking-wider">Teléfono directo</p>
+                                        <p class="font-sans text-lg font-medium">664.164.6005</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-11 h-11 bg-brand-accent/20 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <i class="ph-fill ph-map-pin text-xl text-brand-accent"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-sans text-xs text-gray-500 uppercase tracking-wider">Ubicación</p>
+                                        <p class="font-sans text-sm font-medium leading-relaxed">Calle Creston #1972, Jardines del Sol<br>Playas de Tijuana C.P. 22505</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario -->
+                        <div class="bg-white text-brand-dark p-12 md:p-16">
+                            <h3 class="font-serif text-2xl font-bold mb-8">Escríbenos</h3>
+                            <form id="wa-form" class="space-y-7">
+                                <div class="relative">
+                                    <input type="text" id="wa-name" required class="input-tech peer placeholder-transparent" placeholder="Tu Nombre">
+                                    <label for="wa-name" class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-brand-purple peer-focus:text-sm pointer-events-none">Tu Nombre</label>
+                                </div>
+
+                                <div class="relative">
+                                    <select id="wa-service" required class="input-tech text-brand-dark appearance-none cursor-pointer">
+                                        <option value="" disabled selected>Selecciona una especialidad</option>
+                                        <option value="Terapia Individual">Terapia Individual Adultos</option>
+                                        <option value="Terapia de Pareja">Terapia de Pareja</option>
+                                        <option value="Terapia para Adolescentes">Terapia para Adolescentes</option>
+                                        <option value="Terapia Online">Consulta Online General</option>
+                                    </select>
+                                    <i class="ph ph-caret-down absolute right-0 top-4 text-gray-400 pointer-events-none"></i>
+                                </div>
+
+                                <div class="relative pt-2">
+                                    <textarea id="wa-message" rows="3" class="input-tech peer placeholder-transparent resize-none" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                                    <label for="wa-message" class="absolute left-0 top-0 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-5 peer-focus:top-0 peer-focus:text-brand-purple peer-focus:text-sm pointer-events-none">Breve motivo de consulta (opcional)</label>
+                                </div>
+
+                                <button type="submit" class="w-full bg-brand-dark text-white py-4 rounded-xl font-medium hover:bg-brand-purple transition-all hover:-translate-y-0.5 hover:shadow-lg flex justify-center items-center gap-2 group">
+                                    Enviar a WhatsApp
+                                    <i class="ph ph-whatsapp-logo text-xl group-hover:scale-110 transition-transform"></i>
+                                </button>
+                                <p class="text-center text-xs text-gray-400 flex items-center justify-center gap-1.5">
+                                    <i class="ph-fill ph-lock-key text-gray-400"></i>
+                                    Información 100% confidencial
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-white py-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-12">
+                <div class="max-w-xs">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="logo.png" alt="El Diván" class="footer-logo">
+                        <div>
+                            <h1 class="font-serif font-bold text-xl">El Diván</h1>
+                            <span class="font-sans text-[10px] uppercase tracking-wider text-gray-500">Espacio Terapéutico</span>
+                        </div>
+                    </div>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed">
+                        Un espacio seguro para comprenderte, transformarte y vivir mejor. Psicoanálisis contemporáneo en Tijuana, México.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Navegación</h3>
+                    <a href="#filosofia" class="font-sans text-sm text-gray-400 hover:text-white transition-colors">Filosofía</a>
+                    <a href="#proceso" class="font-sans text-sm text-gray-400 hover:text-white transition-colors">Proceso Terapéutico</a>
+                    <a href="#servicios" class="font-sans text-sm text-gray-400 hover:text-white transition-colors">Especialidades</a>
+                    <a href="#testimonios" class="font-sans text-sm text-gray-400 hover:text-white transition-colors">Testimonios</a>
+                    <a href="#faq" class="font-sans text-sm text-gray-400 hover:text-white transition-colors">Preguntas Frecuentes</a>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Contacto</h3>
+                    <a href="tel:6641646005" class="font-sans text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+                        <i class="ph ph-phone text-brand-accent"></i> 664.164.6005
+                    </a>
+                    <p class="font-sans text-sm text-gray-400 flex items-start gap-2">
+                        <i class="ph ph-map-pin text-brand-accent mt-0.5"></i>
+                        <span>Calle Creston #1972<br>Playas de Tijuana, B.C.</span>
+                    </p>
+                    <div class="flex gap-3 mt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-purple flex items-center justify-center transition-all hover:scale-110">
+                            <i class="ph-fill ph-facebook-logo text-lg"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-purple flex items-center justify-center transition-all hover:scale-110">
+                            <i class="ph-fill ph-instagram-logo text-lg"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110">
+                            <i class="ph-fill ph-tiktok-logo text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-sans text-xs text-gray-600">&copy; 2024 El Diván del Psicoanalista. Todos los derechos reservados.</p>
+                <p class="font-sans text-xs text-gray-600">Psicoanálisis Contemporáneo · Tijuana, México</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/526641646005?text=Hola,%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20terapia." target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-50 group">
+        <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+        <span class="absolute inset-0 rounded-full bg-[#25D366] opacity-50 animate-ping -z-10"></span>
+        <span class="absolute right-full mr-4 bg-white text-brand-dark text-sm px-3 py-1.5 rounded-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
+            ¿Hablamos?
+        </span>
+    </a>
+
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
+</html>
